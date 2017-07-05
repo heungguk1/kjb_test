@@ -1,4 +1,4 @@
-package com.estgames.study.model;
+package com.estgames.study.chapter02.model;
 
 public class Apple {
 
