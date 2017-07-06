@@ -16,7 +16,7 @@ public class Apple {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	public int getWeight() {
+	public Integer getWeight() {
 		return weight;
 	}
 	public void setWeight(int weight) {
