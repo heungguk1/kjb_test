@@ -23,4 +23,8 @@ public class Apple {
 		this.weight = weight;
 	}
 	
+	public boolean equalsColor(String color){
+		return this.color.equals(color);
+	}
+	
 }
