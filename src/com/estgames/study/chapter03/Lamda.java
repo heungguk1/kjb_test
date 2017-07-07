@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import com.estgames.study.chapter02.model.Apple;
-import com.estgames.study.chapter02.predicate.ApplePredicate;
 
 public class Lamda {
 
