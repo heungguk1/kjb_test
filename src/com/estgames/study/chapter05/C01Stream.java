@@ -1,4 +1,4 @@
-package com.estgames.study.chapter5;
+package com.estgames.study.chapter05;
 
 import java.util.Arrays;
 import java.util.List;
