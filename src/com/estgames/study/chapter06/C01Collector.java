@@ -57,6 +57,11 @@ public class C01Collector {
 				Dish::getCalories,
 				Integer::sum));
 		int totoalCalories2 = menu.stream().map(Dish::getCalories).reduce(Integer::sum).orElse(0);
+		
+		String shortMenu0 = menu.stream().map(Dish::getName).collect(joining());
+		String shortMenu1 = menu.stream().map(Dish::getName).collect(reducing((d1, d2) -> d1 + d2)).orElse("");
+		//String shortMenu2 = menu.stream().collect(reducing((d1, d2) -> d1.getName() + d2.getName())).orElse("");
+		String shortMenu3 = menu.stream().collect(reducing("", Dish::getName, (s1, s2) -> s1 + s2));
 	}
 	
 	public static <T> Collector<T, ?, Long> counting(){
