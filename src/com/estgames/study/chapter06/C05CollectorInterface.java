@@ -1,11 +1,17 @@
 package com.estgames.study.chapter06;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Predicate;
+import java.util.stream.IntStream;
 
 import com.estgames.study.chapter04.model.Dish;
 
 import static java.util.stream.Collectors.*;
+
+import java.util.ArrayList;
 
 public class C05CollectorInterface {
 	
@@ -26,6 +32,50 @@ public class C05CollectorInterface {
 				.collect(new ToListCollector<Dish>());
 		List<Dish> dishesByFactoryMethod = menu.stream()
 				.collect(toList());
+		List<Dish> dishesByCustom = menu.stream()
+				.collect(ArrayList::new,
+						List::add,
+						List::addAll);
+		
+		Map<Boolean, List<Integer>> primePartitioned = IntStream.rangeClosed(2, 100)
+				.boxed()
+				.collect(partitioningBy(i -> C03Grouping.isPrime(i)));
+		System.out.println(primePartitioned);
+		
+		Map<Boolean, List<Integer>> primeByCustom = partitionPrimesWithCustomCollector(100);
+		System.out.println(primeByCustom);
+	}
+	
+	public static Map<Boolean, List<Integer>> partitionPrimes(int n) {
+		return IntStream.rangeClosed(2, n)
+				.boxed()
+				.collect(partitioningBy(i -> C03Grouping.isPrime(i)));
+	}
+	
+	public static Map<Boolean, List<Integer>> partitionPrimesWithCustomCollector(int n) {
+		return IntStream
+				.rangeClosed(2, n)
+				.boxed()
+				.collect(new PrimeNumbersCollector());
+	}
+	
+	public Map<Boolean, List<Integer>> partitionPrimesWithCustomCollector2(int n) {
+		return IntStream
+				.rangeClosed(2, n)
+				.boxed()
+				.collect(
+						() -> new HashMap<Boolean, List<Integer>>() {{
+							put(true, new ArrayList<Integer>());
+							put(false, new ArrayList<Integer>());
+						}},
+						(map, ele) -> 
+							map.get(isPrime(map.get(true), ele))
+							.add(ele),
+						(map1, map2) -> {
+							map1.get(true).addAll(map2.get(true));
+							map1.get(false).addAll(map2.get(false));
+							return map1;
+						});
 	}
 
 }
