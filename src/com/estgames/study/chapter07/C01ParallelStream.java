@@ -17,7 +17,7 @@ public class C01ParallelStream {
 	
 	public static long iterativeSum(int n){
 		long result = 0;
-		for(long l = 1L; i <= n; i++) {
+		for(long l = 1L; l <= n; l++) {
 			result += l;
 		}
 		return result;
