@@ -13,7 +13,9 @@ public class SumHarness {
 		//System.out.println("Ranged sum done in : " + harness.measureSumPerf(C01ParallelStream::rangedSum, 10_000_000) + " msecs");
 		//System.out.println("Ranged Parallel sum done in : " + harness.measureSumPerf(C01ParallelStream::parallelRangedSum, 10_000_000) + " msecs");
 		
-		System.out.println("SideEffect Parallel sum done in : " + harness.measureSumPerf(C01ParallelStream::sideEffectParallelSum, 10_000_000) + " msecs");
+		//System.out.println("SideEffect Parallel sum done in : " + harness.measureSumPerf(C01ParallelStream::sideEffectParallelSum, 10_000_000) + " msecs");
+		
+		System.out.println("ForkJoin sum done in : " + harness.measureSumPerf(C02ForkJoinFramework::forkJoinSum, 10_000_000) + " msecs");
 	}
 
 	public long measureSumPerf(Function<Long, Long> adder, long n){
