@@ -59,7 +59,7 @@ public class C05CollectorInterface {
 				.collect(new PrimeNumbersCollector());
 	}
 	
-	public Map<Boolean, List<Integer>> partitionPrimesWithCustomCollector2(int n) {
+	public static Map<Boolean, List<Integer>> partitionPrimesWithCustomCollector2(int n) {
 		return IntStream
 				.rangeClosed(2, n)
 				.boxed()
@@ -74,8 +74,22 @@ public class C05CollectorInterface {
 						(map1, map2) -> {
 							map1.get(true).addAll(map2.get(true));
 							map1.get(false).addAll(map2.get(false));
-							return map1;
 						});
+	}
+	
+	public static boolean isPrime(List<Integer> prime, int value) {
+		return takeWhile(prime, i -> i*i <= value)
+				.stream()
+				.noneMatch(i -> value % i == 0);
+	}
+	
+	public static <A> List<A> takeWhile(List<A> list, Predicate<A> p) {
+		int i = 0;
+		for(A item : list){
+			if(!p.test(item))
+				return list.subList(0, i);
+		}
+		return list;
 	}
 
 }

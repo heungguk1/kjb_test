@@ -16,8 +16,8 @@ public class CollectorHarness {
 	}
 	
 	private static void partitionPrimes(int i) {
-		//C05CollectorInterface.partitionPrimesWithCustomCollector(i);
-		C05CollectorInterface.partitionPrimes(i);
+		C05CollectorInterface.partitionPrimesWithCustomCollector(i); // 540
+		//C05CollectorInterface.partitionPrimes(i); // 418
 	}
 	
 }
