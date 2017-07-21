@@ -1,7 +1,9 @@
 package com.estgames.study.chapter07;
 
+import java.util.Spliterator;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 public class C03Spliterator {
 	
@@ -19,6 +21,10 @@ public class C03Spliterator {
 				.mapToObj(s::charAt)
 				.parallel();
 		System.out.println("FOund " + main.countWords(streamParallel) + " words");
+		
+		Spliterator<Character> spliterator = new WordCounterSpliterator(s);
+		Stream<Character> streamSpliterator = StreamSupport.stream(spliterator, true);
+		System.out.println("FOund " + main.countWords(streamSpliterator) + " words");
 	}
 
 	public int countWordsIteratively(String s){
