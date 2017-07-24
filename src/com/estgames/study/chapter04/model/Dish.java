@@ -1,5 +1,7 @@
 package com.estgames.study.chapter04.model;
 
+import com.estgames.study.chapter06.C03Grouping;
+
 public class Dish {
 
 	String name;
@@ -58,6 +60,12 @@ public class Dish {
 
 	public enum Type{
 		MEAT, FISH, OTHER;
+	}
+	
+	public C03Grouping.CaloricLevel getCaloricLevel(){
+		if(this.getCalories() <= 400) return C03Grouping.CaloricLevel.DIET;
+		else if(this.getCalories() <= 700) return C03Grouping.CaloricLevel.NORMAL;
+		else return C03Grouping.CaloricLevel.FAT;
 	}
 	
 }
