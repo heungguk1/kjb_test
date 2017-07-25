@@ -1,4 +1,4 @@
-package com.estgames.study.chapter08;
+/*package com.estgames.study.chapter08;
 
 public class ProductFactory {
 
@@ -16,3 +16,4 @@ public class ProductFactory {
 	}
 	
 }
+*/
